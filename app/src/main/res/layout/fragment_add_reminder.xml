@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.mujahideen1995.deadline_reminder.HomeActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What do you want to do ?"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/txt_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="what we have to remind you"/>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/text_description"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:hint="Describe your Reminder here"
+            android:layout_marginTop="16dp"
+            android:gravity="left"
+
+
+            />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date : "
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/txtdate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Select Date !"
+            android:focusableInTouchMode="false"
+            />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time : "
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/txttime"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Select Time !"
+            android:focusableInTouchMode="false"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:text="Save"
+            android:id="@+id/SaveButton"
+            android:layout_gravity="center_horizontal" />
+
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>
