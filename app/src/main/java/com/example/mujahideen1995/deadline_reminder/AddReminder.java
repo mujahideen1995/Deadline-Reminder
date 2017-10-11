@@ -96,9 +96,6 @@ public class AddReminder extends AppCompatActivity {
                        });
 
 
-
-
-
     }
 
     private void initComponents(){
@@ -108,11 +105,9 @@ public class AddReminder extends AppCompatActivity {
             public void onClick(View v) {
             validasiForm();
 
-
             }
                                       });
     }
-
 
     private void validasiForm(){
 
