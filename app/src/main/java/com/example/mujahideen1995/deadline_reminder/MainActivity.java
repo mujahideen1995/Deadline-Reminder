@@ -6,9 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 
+import com.example.mujahideen1995.deadline_reminder.helper.DBHandler;
+
 public class MainActivity extends AppCompatActivity {
 
     private static int SPLASH_TIME_OUT=3000;
+    private DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,5 +26,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         },SPLASH_TIME_OUT);
+
+        dbHandler= new DBHandler(this);
     }
 }

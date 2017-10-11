@@ -37,10 +37,11 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/options_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:onClick="onClick"
             android:drawableRight="@drawable/more_vert" />
 
 

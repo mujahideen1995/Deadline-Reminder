@@ -20,8 +20,8 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "db_reminder"; // NAMA DATABASE
     private static final String TABLE_REMINDER = "table_reminder"; // NAMA TABEL
-    private static final String COLUMN_ID = "id"; // NAMA KOLOM ID
-    private static final String COLUMN_TITLE = "title"; // NAMA KOLOM NAMA
+    private static final String COLUMN_ID = "id"; //
+    private static final String COLUMN_TITLE = "title"; //
     private static final String COLUMN_DESCRIPTION = "description"; //
     private static final String COLUMN_DATE = "date";
     private static final String COLUMN_TIME = "time";
@@ -34,11 +34,11 @@ public class DBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_REMINDER + "("
-                + COLUMN_ID + " INTEGER PRIMARY KEY," + COLUMN_TITLE + " TEXT,"
-                + COLUMN_DESCRIPTION + " TEXT"
-                + COLUMN_DATE + "TEXT,"
-                + COLUMN_TIME + "TEXT"
-                + ")";
+                + COLUMN_ID + " INTEGER PRIMARY KEY,"
+                + COLUMN_TITLE + " TEXT,"
+                + COLUMN_DESCRIPTION + " TEXT,"
+                + COLUMN_DATE + " TEXT,"
+                + COLUMN_TIME + " TEXT" + ")";
         db.execSQL(CREATE_USER_TABLE);
     }
 
@@ -55,7 +55,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_TITLE, reminder.getTitle());
-        values.put(COLUMN_DESCRIPTION, reminder.getTitle());
+        values.put(COLUMN_DESCRIPTION, reminder.getDescription());
         values.put(COLUMN_DATE, reminder.getDate());
         values.put(COLUMN_TIME, reminder.getTime());
 

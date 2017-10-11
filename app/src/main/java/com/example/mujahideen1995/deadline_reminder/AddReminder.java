@@ -2,6 +2,7 @@ package com.example.mujahideen1995.deadline_reminder;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Build;
 
@@ -32,12 +33,10 @@ import butterknife.ButterKnife;
 public class AddReminder extends AppCompatActivity {
 
     protected Cursor cursor;
-    //DataHelper dbHelper;
 
     @BindView(R.id.txt_title) TextView txt_title;
-
     @BindView(R.id.txtdate) EditText txtdate;
-    @BindView(R.id.txttime) EditText txtime;
+    @BindView(R.id.txttime) EditText txttime;
     @BindView(R.id.SaveButton) Button SaveButton;
     @BindView(R.id.text_description) EditText text_description;
 
@@ -76,58 +75,58 @@ public class AddReminder extends AppCompatActivity {
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-                       txtime.setOnClickListener(new View.OnClickListener() {
-                           @Override
-                           public void onClick(View v) {
-                               Calendar mcurrentTime = Calendar.getInstance();
-                               int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
-                               int minute = mcurrentTime.get(Calendar.MINUTE);
-                               TimePickerDialog mTimePicker;
-
-                               mTimePicker = new TimePickerDialog(AddReminder.this, new TimePickerDialog.OnTimeSetListener() {
-                                   @Override
-                                   public void onTimeSet(TimePicker timePicker, int selectHour, int selectMinute) {
-                                       txtime.setText(selectHour + ":" + selectMinute);
-                                   }
-                               }, hour, minute, true);
-                               mTimePicker.setTitle("Select Time");
-                               mTimePicker.show();
-                           }
-                       });
-
-
-    }
-
-    private void initComponents(){
-
-        SaveButton.setOnClickListener(new View.OnClickListener(){
+        txttime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            validasiForm();
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
 
+                mTimePicker = new TimePickerDialog(AddReminder.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectHour, int selectMinute) {
+                        txttime.setText(selectHour + ":" + selectMinute);
+                    }
+                }, hour, minute, true);
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
             }
-                                      });
+        });
     }
+        private void initComponents(){
+            SaveButton = (Button) findViewById(R.id.SaveButton);
+
+            SaveButton.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    validasiForm();
+
+                }
+            });
+        }
 
     private void validasiForm(){
 
         String form_title = txt_title.getText().toString();
         String form_description = text_description.getText().toString();
         String form_date = txtdate.getText().toString();
-        String form_time = txtime.getText().toString();
+        String form_time = txttime.getText().toString();
 
         if (form_title.isEmpty()){
             txt_title.setError("Please Input Your Reminder First !");
             txt_title.requestFocus();
-        } if (form_date.isEmpty()){
-            txtdate.setError("Date cannot be empty !");
-            txtdate.requestFocus();
-        } if (form_description.isEmpty()){
+
+        }  else if (form_description.isEmpty()){
             text_description.setError("Please input the description");
             text_description.requestFocus();
-        } if (form_time.isEmpty()){
-            txtime.setError("Time cannot be Empty !");
-            txtime.requestFocus();
+        }  else if (form_date.isEmpty()) {
+            txtdate.setError("Date cannot be empty !");
+            txtdate.requestFocus();
+
+        }  else if (form_time.isEmpty()){
+            txttime.setError("Time cannot be Empty !");
+            txttime.requestFocus();
         }
 
         else {
@@ -137,6 +136,10 @@ public class AddReminder extends AppCompatActivity {
             adapter.notifyDataSetChanged();
 
             Toast.makeText(AddReminder.this, "Berhasil Menambahkan Data", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(AddReminder.this, HomeActivity.class);
+            AddReminder.this.finish();
         }
     }
+
 }
+
